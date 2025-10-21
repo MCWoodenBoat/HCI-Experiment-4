@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国庆假期活动调查问卷数据</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif; 
+            transition: background-color 0.5s ease;
+        }
+
+        /* 自定义滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f4f8;
+            opacity: 0.5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b91c1c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ef4444; 
+        }
+
+        /* 文本颜色 */
+        .text-body {
+            color: #1f2937; /* Gray-900 */
+        }
+        .text-light {
+             color: #374151; /* Gray-700 */
+        }
+
+        /* Q&A 编号样式 */
+        .qa-number {
+            font-family: 'Noto Serif SC', serif; 
+            min-width: 40px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 antialiased">
+
+    <header class="relative h-[40vh] md:h-[50vh] overflow-hidden flex items-center justify-center text-white">
+        <div class="absolute inset-0 overflow-hidden">
+            <img 
+                src="image/national-day-background.jpg" 
+                alt="Background"
+                class="w-full h-full object-cover brightness-50"
+            >
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">国庆假期调查问卷结果</h1>
+            <p class="mt-4 text-base md:text-lg font-light drop-shadow-md">
+                查看特定调查参与者的详细问卷回答。
+            </p>
+            <button
+                class="mt-8 px-8 py-3 bg-white text-red-700 rounded-full text-lg font-semibold shadow-md hover:bg-red-100 hover:scale-105 transition-all duration-100"
+                onclick="window.location.href='index.html'">
+                返回项目主页
+            </button>
+        </div>
+    </header>
+
+    <div>
+        
+        <main class="container mx-auto px-6 py-16 md:py-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-red-700 mb-10 text-center">问卷回答详情</h2>
+            <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mb-12">
+                <div class="flex flex-col md:flex-row items-start md:items-center justify-between">
+                    <label for="participant-select" class="text-xl font-semibold text-body mb-3 md:mb-0 md:mr-6">选择调查参与者</label>
+                    <div class="flex flex-col sm:flex-row w-full md:w-auto space-y-3 sm:space-y-0 sm:space-x-4">
+                        <select
+                            id="participant-select"
+                            class="flex-grow md:flex-none p-3 border border-gray-300 rounded-lg text-body focus:ring-red-500 focus:border-red-500 max-w-sm"
+                            onchange="loadSurveyData()">
+                            <option value="1" data-name="参与者 A" selected>参与者 A</option>
+                            <option value="2" data-name="参与者 B">参与者 B</option>
+                            <option value="3" data-name="参与者 C">参与者 C</option>
+                            <option value="4" data-name="参与者 D">参与者 D</option>
+                            <option value="5" data-name="参与者 E">参与者 E</option>
+                            <option value="6" data-name="参与者 F">参与者 F</option>
+                            <option value="7" data-name="参与者 G">参与者 G</option>
+                            <option value="8" data-name="参与者 H">参与者 H</option>
+                            <option value="9" data-name="参与者 I">参与者 I</option>
+                            <option value="10" data-name="参与者 J">参与者 J</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="survey-data-list" class="space-y-8">
+            </div>
+
+            <script>
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadSurveyData();
+                });
+
+                // 统一的问卷数据仓库
+                const surveyDataRepository = {
+                    // 定义问卷结构：问题文本、选项和类型 (保持不变)
+                    "surveyStructure": {
+                        "1": {
+                            "question": "Q1: 您对即将到来的假期有多期待？",
+                            "options": ["非常", "比较", "中立", "不太", "完全不"],
+                            "type": "likert" // 李克特量表
+                        },
+                        "2": {
+                            "question": "Q2: 您假期期间的购物预算是多少？",
+                            "options": ["￥0 ~ ￥1000", "￥1000 ~ ￥2000", "￥2000 ~ ￥3000", "> ￥3000"],
+                            "type": "single"
+                        },
+                        "3": {
+                            "question": "Q3: 您假期期间非实体消费通常占总消费的多少？",
+                            "options": ["0% ~ 25%", "25% ~ 50%", "50% ~ 75%", "75% ~ 100%"],
+                            "type": "single"
+                        },
+                        "4": {
+                            "question": "Q4: 您以往假期期间购买商品最看重哪三个方面？",
+                            "options": ["实用", "外观", "质量", "宣传", "价格", "热度", "国庆主题", "其他"],
+                            "type": "multiple"
+                        },
+                        "5": {
+                            "question": "Q5: 您假期期间的非实体消费通常在于哪些方面？",
+                            "options": ["娱乐", "交通", "教育", "体育", "其他"],
+                            "type": "multiple"
+                        },
+                        "6": {
+                            "question": "Q6: 请列举3个您曾经在假期期间购买的产品。",
+                            "options": [],
+                            "type": "open" // 开放式填空
+                        },
+                        "7": {
+                            "question": "Q7: 您是否满意假期期间的消费市场？",
+                            "options": ["非常", "比较", "中立", "不太", "完全不"],
+                            "type": "likert" // 李克特量表
+                        },
+                        "8": {
+                            "question": "Q8: 您是否经常在假期旅行？",
+                            "options": ["总是", "经常", "有时", "几乎不", "从不"],
+                            "type": "likert" // 李克特量表
+                        },
+                        "9": {
+                            "question": "Q9: 请列举3个最令您印象深刻的旅行的目的地。",
+                            "options": [],
+                            "type": "open" // 开放式填空
+                        },
+                        "10": {
+                            "question": "Q10: 您认为您距离您的理想旅行有多近？",
+                            "options": ["非常", "比较", "中立", "不太", "完全不"],
+                            "type": "likert" // 李克特量表
+                        },
+                        "11": {
+                            "question": "Q11: 请对以下选项中3个最能影响您假期期间选择旅行目的地的项目进行排序。",
+                            "options": ["成本", "交通/距离", "文化/自然", "国家/地区", "安全", "天气", "热度", "住宿", "人际关系", "其他"],
+                            "type": "rank" // 排序
+                        },
+                        "12": {
+                            "question": "Q12: 您更喜欢哪种旅行，特种兵式还是慢节奏？",
+                            "options": ["特种兵式", "慢节奏"],
+                            "type": "single"
+                        },
+                        "13": {
+                            "question": "Q13: 您更喜欢哪种旅行，出门远游还是城市漫步？",
+                            "options": ["出门远游", "城市漫步"],
+                            "type": "single"
+                        },
+                        "14": {
+                            "question": "Q14: 您对于宅家生活的喜爱程度如何？",
+                            "options": ["非常", "比较", "中立", "不太", "完全不"],
+                            "type": "likert" // 李克特量表
+                        },
+                        "15": {
+                            "question": "Q15: 您认为您在不无聊的情况下最长能在家里待多久？",
+                            "options": ["0小时 ~ 6小时", "6小时 ~ 1天", "1天 ~ 1 周", "1周 ~ 1个月", "> 1个月"],
+                            "type": "single"
+                        },
+                        "16": {
+                            "question": "Q16: 您认为哪些选项是宅家生活有所缺失但很重要的？",
+                            "options": ["人际交往", "娱乐", "体育", "其他"],
+                            "type": "multiple"
+                        },
+                        "17": {
+                            "question": "Q17: 您认为您度过更美好的假期还需要什么？",
+                            "options": [],
+                            "type": "open" // 开放式填空
+                        }
+                    },
+
+                    // 参与者答案数据 (已将新数据整合，并调整键名以适应 loadSurveyData 逻辑)
+                    "participants": {
+                        "1": { // 参与者 E
+                            "1": "非常", "2": "￥1000 ~ ￥2000", "3": "75% ~ 100%", "4": ["质量", "价格", "国庆主题"], "5": ["娱乐", "体育"],
+                            "6": "aajajsj", "7": "完全不", "8": "经常", "9": "无",
+                            "10": "中立", "11": ["1. 交通/距离", "2. 住宿", "3. 安全"], "12": "慢节奏", "13": "城市漫步",
+                            "14": "不太", "15": "1天 ~ 1 周", "16": ["娱乐"], "17": "无",
+                        },
+                        "2": { // 参与者 F
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "0% ~ 25%", "4": ["实用", "质量", "价格"], "5": ["娱乐", "交通"],
+                            "6": "飞机杯 蛋白粉 书籍", "7": "比较", "8": "几乎不", "9": "威海，开封，青岛",
+                            "10": "中立", "11": ["1. 成本", "2. 安全", "3. 交通/距离"], "12": "特种兵式", "13": "城市漫步",
+                            "14": "中立", "15": "1天 ~ 1 周", "16": ["人际交往"], "17": "？",
+                        },
+                        "3": { // 参与者 G
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "50% ~ 75%", "4": ["实用", "质量", "价格"], "5": ["娱乐"],
+                            "6": "王者皮肤", "7": "非常", "8": "有时", "9": "青岛 重庆 厦门",
+                            "10": "不太", "11": ["1. 成本", "2. 交通/距离", "3. 住宿"], "12": "慢节奏", "13": "出门远游",
+                            "14": "非常", "15": "1周 ~ 1个月", "16": ["娱乐"], "17": "play",
+                        },
+                        "4": { // 参与者 H
+                            "1": "中立", "2": "> ￥3000", "3": "50% ~ 75%", "4": ["实用", "外观", "质量"], "5": ["娱乐", "交通"],
+                            "6": "机票，游戏皮肤，法拉利", "7": "中立", "8": "经常", "9": "青岛",
+                            "10": "非常", "11": ["1. 成本", "2. 安全", "3. 天气"], "12": "慢节奏", "13": "出门远游",
+                            "14": "非常", "15": "> 1个月", "16": ["人际交往"], "17": "money",
+                        },
+                        "5": { // 参与者 I
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "0% ~ 25%", "4": ["实用", "质量", "价格"], "5": ["娱乐", "体育"],
+                            "6": "csgo通行证，乒乓球", "7": "中立", "8": "有时", "9": "北京，广州",
+                            "10": "比较", "11": ["1. 成本", "2. 交通/距离", "3. 国家/地区"], "12": "特种兵式", "13": "城市漫步",
+                            "14": "非常", "15": "> 1个月", "16": ["人际交往"], "17": "woman",
+                        },
+                        "6": { // 参与者 J
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "0% ~ 25%", "4": ["外观", "质量", "价格"], "5": ["交通", "教育", "体育"],
+                            "6": "零食 水 玩具", "7": "中立", "8": "有时", "9": "青岛 威海 泰安",
+                            "10": "中立", "11": ["1. 成本", "2. 交通/距离", "3. 文化/自然"], "12": "慢节奏", "13": "城市漫步",
+                            "14": "非常", "15": "1天 ~ 1 周", "16": ["人际交往"], "17": "钱",
+                        },
+                        "7": { // 参与者 K
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "25% ~ 50%", "4": ["实用", "外观", "质量"], "5": ["娱乐"],
+                            "6": "手机壳", "7": "中立", "8": "几乎不", "9": "崂山风景区 济南",
+                            "10": "比较", "11": ["1. 交通/距离", "2. 成本", "3. 文化/自然"], "12": "特种兵式", "13": "出门远游",
+                            "14": "中立", "15": "1天 ~ 1 周", "16": ["人际交往"], "17": "girls",
+                        },
+                        "8": { // 参与者 L
+                            "1": "中立", "2": "￥0 ~ ￥1000", "3": "0% ~ 25%", "4": ["实用", "外观", "质量"], "5": ["娱乐", "交通", "教育"],
+                            "6": "没买过", "7": "中立", "8": "几乎不", "9": "东京山，北九水，翡翠湾",
+                            "10": "不太", "11": ["1. 成本", "2. 交通/距离", "3. 文化/自然"], "12": "慢节奏", "13": "城市漫步",
+                            "14": "非常", "15": "1天 ~ 1 周", "16": ["人际交往"], "17": "没有考研复习任务",
+                        },
+                        "9": { // 参与者 M
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "0% ~ 25%", "4": ["实用", "质量", "价格"], "5": ["娱乐", "交通", "教育"],
+                            "6": "车票 外卖 景区门票", "7": "不太", "8": "总是", "9": "海军博物馆 王懿荣纪念馆 宁波博物馆",
+                            "10": "不太", "11": ["1. 成本", "2. 交通/距离", "3. 文化/自然"], "12": "慢节奏", "13": "城市漫步",
+                            "14": "非常", "15": "> 1个月", "16": ["人际交往"], "17": "钱",
+                        },
+                        "10": { // 参与者 N
+                            "1": "非常", "2": "￥0 ~ ￥1000", "3": "25% ~ 50%", "4": ["实用", "外观", "价格"], "5": ["交通", "教育"],
+                            "6": "文创 鞋子 衣服", "7": "非常", "8": "有时", "9": "中国 中国 中国",
+                            "10": "非常", "11": ["1. 成本", "2. 国家/地区", "3. 交通/距离"], "12": "慢节奏", "13": "出门远游",
+                            "14": "中立", "15": "1天 ~ 1 周", "16": ["娱乐"], "17": "需要人陪",
+                        },
+                    }
+                };
+
+                function loadSurveyData() {
+                    
+                    const participantSelectElement = document.getElementById('participant-select');
+                    const participantId = participantSelectElement.value; // 获取参与者 ID ("1", "2", "3", ...)
+                    const surveyDataList = document.getElementById('survey-data-list');
+                    const participantInfo = document.getElementById('participant-info');
+                    surveyDataList.innerHTML = ''; 
+
+                    // 获取问卷结构和当前参与者的答案
+                    const structure = surveyDataRepository.surveyStructure;
+                    const currentAnswers = surveyDataRepository.participants[participantId];
+
+                    if (!currentAnswers) {
+                        surveyDataList.innerHTML = '<p class="text-center text-gray-500">未找到该参与者的问卷数据。</p>';
+                        return;
+                    }
+                    
+                    // 遍历问题结构 (使用数字键 1 到 17)
+                    for (let i = 1; i <= Object.keys(structure).length; i++) {
+                        const qKey = String(i);
+                        const q = structure[qKey];
+                        let answer = currentAnswers[qKey];
+
+                        // 格式化答案以便展示
+                        if (q.type === 'multiple' && Array.isArray(answer)) {
+                            // 多选题答案用斜杠分隔
+                            answer = answer.join(' / ');
+                        } else if (q.type === 'rank' && Array.isArray(answer)) {
+                            // 排序题答案用箭头连接
+                            answer = answer.join(' → ');
+                        } else if (answer === undefined) {
+                            // 确保答案缺失时有提示
+                            answer = "（未作答/数据缺失）";
+                        }
+                        
+                        // 渲染问题
+                        renderQuestion(
+                            surveyDataList,
+                            q.question,
+                            answer,
+                            q.type === 'single' ? "单选题" : 
+                            q.type === 'multiple' ? "多选题" : 
+                            q.type === 'rank' ? "排序题" : 
+                            q.type === 'likert' ? "李克特量表" : 
+                            "开放式填空题",
+                            q.options
+                        );
+                    }
+                }
+
+                // 通用渲染函数 (用于生成每个问题的 HTML 结构)
+                function renderQuestion(container, questionText, answerText, typeLabel, options) {
+                    // 提取 Qn 编号
+                    const questionNumberMatch = questionText.match(/^Q\d+:/);
+                    const questionNumber = questionNumberMatch ? questionNumberMatch[0].replace(':', '') : 'Q?';
+                    const cleanQuestionText = questionText.replace(/^Q\d+:\s*/, '').trim();
+
+                    const item = document.createElement('div');
+                    item.className = 'bg-white p-6 rounded-xl shadow-lg border-l-4 border-red-600 transition-shadow hover:shadow-xl';
+
+                    // 问题部分
+                    let htmlContent = `
+                        <div class="mb-4 border-b pb-3 border-gray-100">
+                            <h3 class="text-xl font-bold text-red-700 flex items-start">
+                                <span class="qa-number text-red-900 font-extrabold mr-2">${questionNumber}</span> 
+                                <span>${cleanQuestionText}</span>
+                            </h3>
+                            <p class="text-sm font-medium text-gray-500 mt-1 ml-10">（类型：${typeLabel}）</p>
+                        </div>
+                    `;
+
+                    // 答案部分
+                    // 检查答案是否包含分隔符，如果是，则用 / 分隔，否则直接用原文本
+                    let displayAnswer = Array.isArray(answerText) ? answerText.join(' / ') : String(answerText || '未作答');
+
+                    htmlContent += `
+                        <div class="pl-10 pt-2">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-2">参与者答案：</h4>
+                            <div class="p-3 bg-red-50/70 border border-red-200 rounded-lg text-gray-900 font-medium whitespace-pre-wrap">
+                                ${displayAnswer}
+                            </div>
+                        </div>
+                    `;
+
+                    // 对于非开放式题目，显示原始选项 (便于对比)
+                    if (options && options.length > 0 && typeLabel !== '开放式填空题') {
+                        htmlContent += `
+                            <div class="pl-10 pt-4 mt-4 border-t border-gray-100">
+                                <h4 class="text-base font-semibold text-gray-600 mb-2">原始选项：</h4>
+                                <ul class="list-disc list-inside text-sm text-gray-500 space-y-1">
+                                    ${options.map(opt => {
+                                        // 逻辑：检查答案文本是否包含选项的全部内容，或者是否在多选/排序的分隔符中
+                                        const isSelected = displayAnswer.includes(opt);
+                                        // 针对李克特量表，可能需要更精确匹配，这里用 includes 应该够用
+                                        
+                                        return `<li class="${isSelected ? 'font-bold text-gray-700' : ''}">${opt}</li>`;
+                                    }).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+
+                    item.innerHTML = htmlContent;
+                    container.appendChild(item);
+                }            
+            </script>
+        </div>
+        </main>
+        
+        <footer class="text-center mt-12 pb-12 text-gray-500 bg-gray-100">
+            <p class="text-sm">2025 人机蕉户团队</p>
+        </footer>
+
+    </div>
+</body>
+</html>
