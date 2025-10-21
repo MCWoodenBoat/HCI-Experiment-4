@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国庆假期生活解码</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif; 
+            transition: background-color 0.5s ease;
+        }
+
+        /* 自定义滚动条样式 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f4f8;
+            opacity: 0.5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b91c1c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ef4444; 
+        }
+
+        /* 文本颜色 */
+        .text-body {
+            color: #1f2937; /* Gray-900 */
+        }
+        .text-light {
+             color: #374151; /* Gray-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 antialiased">
+
+    <!-- 顶部大图与项目简介 -->
+    <header class="relative h-[60vh] md:h-[70vh] overflow-hidden flex items-center justify-center text-white">
+        <!-- 大图占位符 -->
+        <div class="absolute inset-0 overflow-hidden">
+            <img 
+                src="national-day-background.jpg" 
+                alt="Background"
+                class="w-full h-full object-cover brightness-50"
+            >
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-6">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">国庆假期生活解码</h1>
+            <p class="mt-4 text-base md:text-lg font-light drop-shadow-md text-left">
+                &emsp;&emsp;国庆黄金周，不仅是日历上的七天长假，更是一扇观察社会变迁与公众生活的窗口。当一些人踏上旅途，追寻“诗与远方”时，另一些人则选择回归生活，享受“宅家”的闲适。在这背后，是复杂的消费决策、多元的休闲观念与真实的社会图景。“国庆假期生活解码”项目，旨在运用科学的社会调查方法，深入这片我们既熟悉又陌生的领域。我们通过访谈与调查问卷，力求系统性地描绘出公众在假期中的消费模式、出行偏好与居家状态，并探寻影响这些选择的深层动因。本项目致力于从数据与故事中提炼出有价值的洞察，最终形成一份详实的公众假期行为报告，为理解当代社会的文化生活提供一份客观、有趣的参考。
+            </p>
+            <button
+                class="mt-8 mr-3 px-8 py-3 bg-white text-red-700 rounded-full text-lg font-semibold shadow-md hover:bg-red-100 hover:scale-105 transition-all duration-100"
+                onclick="document.getElementById('teamIntro').scrollIntoView({behavior: 'smooth'})">
+                团队简介
+            </button>
+            <button
+                class="mt-8 px-8 py-3 bg-white text-red-700 rounded-full text-lg font-semibold shadow-md hover:bg-red-100 hover:scale-105 transition-all duration-100"
+                onclick="document.getElementById('projectProposal').scrollIntoView({behavior: 'smooth'})">
+                项目建议书
+            </button>
+            <button
+                class="mt-8 ml-3 px-8 py-3 bg-white text-red-700 rounded-full text-lg font-semibold shadow-md hover:bg-red-100 hover:scale-105 transition-all duration-100"
+                onclick="document.getElementById('dataCollectionPlan').scrollIntoView({behavior: 'smooth'})">
+                数据收集方案
+            </button>
+        </div>
+    </header>
+
+    <!-- 主容器 -->
+    <div>
+        
+        <!-- 纵向排列 -->
+        <main class="space-y-0">
+
+            <!-- Section 1: 团队简介 (文字左, 图片右) -->
+            <section class="relative min-h-[500px] flex items-center py-24 md:py-32" id="teamIntro">
+                <!-- Image Background with Gradient Overlay -->
+                <div class="absolute inset-0 z-0">
+                    <img src="joker-who.png" alt="团队协作图片" class="w-full h-full object-cover">
+                    <!-- 渐变层：从左侧（文字区域）的 bg-gray-100 渐变到右侧的透明（图片区域） -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/95 md:w-5/5 to-transparent"></div>
+                </div>
+
+                <!-- Text Content Layer -->
+                <div class="relative z-10 w-full px-20">
+                    <div class="md:w-3/5 md:pr-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-red-700 mb-6">团队简介：人机蕉户</h2>
+                        <p class="text-light leading-relaxed mb-4">
+                            人机蕉户团队是一个专注于通过数据洞察社会的项目小组。团队名称寓意着我们致力于在人文社科与计算机科学之间建立紧密的“交互”桥梁，探索用户行为背后的数据逻辑。
+                        </p>
+                        <p class="text-light leading-relaxed">
+                            当前，我们聚焦于公众的假期生活模式研究。国庆假期作为重要的社会现象，其背后的公众选择、消费倾向与休闲偏好，是观察社会变迁的微观窗口。本项目旨在收集与分析相关数据，解读假期生活，为理解当代社会文化生活提供一份有价值的参考。
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: 项目建议书 (图片左, 文字右) -->
+            <section class="relative min-h-[700px] flex items-center py-24 md:py-32" id="projectProposal">
+                <!-- Image Background with Gradient Overlay -->
+                <div class="absolute inset-0 z-0">
+                    <img src="project-proposal.jpg" alt="项目规划图片" class="w-full h-full object-cover">
+                     <!-- 渐变层：从右侧（文字区域）的 bg-gray-100 渐变到左侧的透明（图片区域） -->
+                    <div class="absolute inset-0 bg-gradient-to-l from-gray-100 via-gray-100/95 md:w-5/5 md:ml-auto to-transparent"></div>
+                </div>
+
+                <!-- Text Content Layer -->
+                <div class="relative z-10 w-full px-20 flex justify-end">
+                    <div class="md:w-3/5 md:pl-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-red-700 mb-6">项目建议：公众国庆假期行为与态度调查研究</h2>
+                        
+                        <div class="space-y-6 text-body">
+                            <div>
+                                <h3 class="text-xl font-semibold text-red-700 mb-3">项目背景与目的</h3>
+                                <p class="mb-3 text-light">国庆长假是观察公众消费行为、休闲选择及生活态度的重要时间节点。本项目旨在通过科学的调研方法，达成以下目标：</p>
+                                <ul class="list-disc list-inside space-y-2 text-light pl-2">
+                                    <li>了解公众在国庆假期期间的<strong class="text-red-700">消费结构、出行偏好及居家安排</strong>。</li>
+                                    <li>深入分析影响公众假期决策的<strong class="text-red-700">关键因素</strong>（如经济、社会、个人偏好等）。</li>
+                                    <li>探究公众对理想假期的<strong class="text-red-700">期望与现实</strong>之间的差距。</li>
+                                    <li>为相关领域的研究及公共服务提供数据支持。</li>
+                                </ul>
+                            </div>
+                            <div>
+                                 <h3 class="text-xl font-semibold text-red-700 mb-3">研究目标</h3>
+                                 <p class="text-light mb-3">本研究将围绕以下三个核心维度展开：</p>
+                                 <ul class="list-disc list-inside space-y-2 text-light pl-2">
+                                    <li><strong class="font-medium text-red-800">消费维度：</strong> 调查假期期间的消费预算、结构（实体与非实体消费比例）及驱动因素。</li>
+                                    <li><strong class="font-medium text-red-800">出行维度：</strong> 探索公众的旅行频率、目的地选择偏好、决策影响因素及旅行体验满意度。</li>
+                                    <li><strong class="font-medium text-red-800">居家维度：</strong> 分析“宅家”群体的休闲方式、需求构成以及对假期质量的自我评估。</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-semibold text-red-700 mb-3">研究方法</h3>
+                                <p class="text-light mb-3">本项目采用混合研究方法，以确保数据的广度与深度：</p>
+                                <ul class="list-disc list-inside space-y-2 text-light pl-2">
+                                    <li><strong class="text-red-800">定性研究：</strong> 通过半结构化访谈，深入获取个体在假期中的具体经历、感受与动机。</li>
+                                    <li><strong class="text-red-800">定量研究：</strong> 通过在线问卷进行调查，获取可量化的数据，用于分析普遍趋势和群体差异。</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: 数据收集方案 (文字左, 图片右) -->
+            <section class="relative min-h-[600px] flex items-center py-24 md:py-32" id="dataCollectionPlan">
+                 <!-- Image Background with Gradient Overlay -->
+                <div class="absolute inset-0 z-0">
+                    <img src="data-collection.jpg" alt="数据分析图片" class="w-full h-full object-cover">
+                    <!-- 渐变层：从左侧（文字区域）的 bg-gray-100 渐变到右侧的透明（图片区域） -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-100/95 md:w-5/5 to-transparent"></div>
+                </div>
+
+                <!-- Text Content Layer -->
+                <div class="relative z-10 w-full px-20">
+                    <div class="md:w-3/5 md:pr-12">
+                        <h2 class="text-3xl md:text-4xl font-bold text-red-700 mb-8">数据收集方案</h2>
+                        <p class="text-light mb-8">数据收集工作分两部分有序进行：</p>
+                        
+                        <div class="space-y-8 text-body">
+                            <div>
+                                <h3 class="text-xl font-semibold text-red-700 mb-4 flex items-center">
+                                    <span class="w-2.5 h-2.5 bg-red-600 rounded-full mr-3"></span> 第一部分：定性数据收集&emsp;
+                                    <button
+                                        class="mr-3 px-5 py-2 bg-white text-red-700 rounded-full text-lg font-semibold shadow hover:bg-gray-100 hover:scale-105 transition-all duration-100"
+                                        onclick="window.open('Interview.pdf', '_blank')">
+                                        采访提纲
+                                    </button>
+                                </h3>
+                                <ul class="list-none space-y-3 text-light pl-5">
+                                    <li><strong class="font-medium text-red-800">实施方式：</strong> 采用一对一、半结构化的访谈形式。</li>
+                                    <li><strong class="font-medium text-red-800">样本量与对象：</strong> 计划招募至少 4 名来自不同背景的受访者，以确保观点的多样性。</li>
+                                    <li><strong class="font-medium text-red-800">访谈内容：</strong> 依据预先设定的访谈提纲，围绕“消费”、“出游”、“宅家”三大主题进行开放式提问，重点挖掘行为背后的原因、个人经历及主观感受。每位访谈时长约 15-20 分钟。</li>
+                                </ul>
+                            </div>
+                             <div>
+                                <h3 class="text-xl font-semibold text-red-700 mb-4 flex items-center">
+                                    <span class="w-2.5 h-2.5 bg-red-600 rounded-full mr-3"></span> 第二部分：定量数据收集&emsp;
+                                    <button
+                                        class="mr-3 px-5 py-2 bg-white text-red-700 rounded-full text-lg font-semibold shadow hover:bg-gray-100 hover:scale-105 transition-all duration-100"
+                                        onclick="window.open('Survey.pdf', '_blank')">
+                                        调查问卷
+                                    </button>
+                                </h3>
+                                <ul class="list-none space-y-3 text-light pl-5">
+                                     <li><strong class="font-medium text-red-800">实施方式：</strong> 设计结构化在线问卷，并通过多种渠道进行分发，以确保样本的广泛性。</li>
+                                     <li><strong class="font-medium text-red-800">样本量目标：</strong> 计划回收不少于 10 份有效问卷。</li>
+                                     <li class="space-y-2">
+                                         <strong class="font-medium text-red-800">问卷内容：</strong> 问卷主要由以下部分构成：
+                                         <ol class="list-decimal list-inside space-y-2 mt-2 pl-4 text-light">
+                                            <li><strong class="text-gray-800">基本态度测量：</strong> 采用李克特量表评估期待度、满意度等。</li>
+                                            <li><strong class="text-gray-800">行为数据收集：</strong> 通过选择题、多选题和排序题，收集预算、消费占比、旅行频率等行为数据。</li>
+                                            <li><strong class="text-gray-800">开放性问题：</strong> 设置少量填空题，收集受访者印象深刻的旅行地、购买过的具体产品等个性化信息。</li>
+                                         </ol>
+                                     </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p class="mt-8 pt-6 border-t border-red-700 text-light text-sm">在数据收集完成后，项目可进入数据分析与报告撰写阶段，对定性与定量数据进行交叉比对与综合解读，从而形成最终的研究结论。</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- 页脚 -->
+        <footer class="text-center mt-12 pb-12 text-gray-500">
+            <p class="text-sm">&copy; 2025 人机蕉户团队</p>
+        </footer>
+
+    </div>
+</body>
+</html>
