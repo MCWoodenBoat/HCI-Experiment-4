@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国庆假期采访结果数据分析</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Serif SC', serif; 
+            transition: background-color 0.5s ease;
+        }
+
+        /* 自定义滚动条样式 (保留) */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0f4f8;
+            opacity: 0.5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #b91c1c; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #ef4444; 
+        }
+
+        /* 文本颜色 (保留) */
+        .text-body {
+            color: #1f2937; /* Gray-900 */
+        }
+        .text-light {
+             color: #374151; /* Gray-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-900 antialiased">
+
+    <header class="relative h-[40vh] md:h-[50vh] overflow-hidden flex items-center justify-center text-white">
+        <div class="absolute inset-0 overflow-hidden">
+            <img 
+                src="image/national-day-background.jpg" 
+                alt="Background"
+                class="w-full h-full object-cover brightness-50"
+            >
+        </div>
+        <div class="relative z-10 text-center max-w-4xl px-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">国庆假期调查问卷数据分析</h1>
+            <p class="mt-4 text-base md:text-lg font-light drop-shadow-md">
+                本次国庆主题采访的受访者共有 4 位，主要围绕假期期待度、消费预算与偏好、旅行计划与方式、宅家生活态度等方面展开访谈，旨在了解受访者国庆假期各种活动的经历和考虑。
+            </p>
+            <button
+                class="mt-8 px-8 py-3 bg-white text-red-700 rounded-full text-lg font-semibold shadow-md hover:bg-red-100 hover:scale-105 transition-all duration-100"
+                onclick="window.location.href='index.html'">
+                返回项目主页
+            </button>
+        </div>
+    </header>
+
+    <main class="p-8 md:p-12 bg-white shadow-lg text-body">
+        
+        <h2 class="text-3xl font-bold text-center text-red-800 mb-8">假期活动亲和图</h2>
+        <p class="text-center text-light mb-12">根据调查问卷反馈，将受访者的活动偏好与关注点进行归类。</p>
+
+        <div class="flex flex-wrap justify-center items-start gap-6 md:gap-8">
+
+            <!-- 1 -->
+            <div class="w-full sm:w-32 md:w-48 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                <div class="p-4 flex-grow">
+                    <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">放松啦</div>
+                    <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">矛盾 想玩 人多</div>
+                    <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">民族自豪</div>
+                    <div class="bg-red-100 text-red-900 p-2 rounded text-sm shadow-sm font-medium text-center">责任 陪家人</div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-red-800 text-lg">假期期待与感受</h3>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="w-full max-w-sm bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div class="p-6 flex">
+                    <div class="w-full sm:w-32 md:w-48 mr-6 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">自然风光</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">亲自文化</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">City Walk</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm shadow-sm font-medium text-center">附近</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-orange-800 text-lg">出行偏好</h3>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-32 md:w-48 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">家人限制</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm shadow-sm font-medium text-center">性价比低</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-orange-800 text-lg">出行限制</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-orange-800 text-lg">假期出行</h3>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="w-full max-w-sm bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div class="p-6 flex">
+                    <div class="w-full sm:w-64 md:w-72 mr-6 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">Plan</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">简约</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">货比三家</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm shadow-sm font-medium text-center">易冲动</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-red-800 text-lg">消费风格</h3>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-64 md:w-72 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">网购</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm shadow-sm font-medium text-center">线上线下结合</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-red-800 text-lg">购物渠道</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-red-800 text-lg">消费行为</h3>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="w-full max-w-sm bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div class="p-6 flex">
+                    <div class="w-full sm:w-32 md:w-48 mr-6 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">清净</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">焦虑</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm shadow-sm font-medium text-center">治愈</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-orange-800 text-lg">宅家感受</h3>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-32 md:w-48 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">休闲放松</div>
+                            <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm shadow-sm font-medium text-center">兴趣提升</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-orange-800 text-lg">宅家活动</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-orange-800 text-lg">宅家相关</h3>
+                </div>
+            </div>
+
+            <!-- 5 -->
+            <div class="w-full max-w-sm bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl">
+                <div class="p-6 flex">
+                    <div class="w-full sm:w-32 md:w-48 mr-6 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">循环规划</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm shadow-sm font-medium text-center">动静结合</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-red-800 text-lg">规划方式</h3>
+                        </div>
+                    </div>
+                    <div class="w-full sm:w-32 md:w-48 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                        <div class="p-4 flex-grow">
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">多陪家人</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">不盲目跟风</div>
+                            <div class="bg-red-100 text-red-900 p-2 rounded text-sm shadow-sm font-medium text-center">留空余时间</div>
+                        </div>
+                        <div class="p-3 bg-white border-t border-gray-200">
+                            <h3 class="text-center font-semibold text-red-800 text-lg">假期建议</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-red-800 text-lg">规划建议</h3>
+                </div>
+            </div>
+
+            <!-- 6 -->
+            <div class="w-full sm:w-32 md:w-48 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                <div class="p-4 flex-grow">
+                    <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">自由轻松</div>
+                    <div class="bg-orange-100 text-orange-900 p-2 rounded text-sm shadow-sm font-medium text-center">平安团圆</div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-orange-800 text-lg">理想假期</h3>
+                </div>
+            </div>
+
+            <!-- 7 -->
+            <div class="w-full sm:w-32 md:w-48 bg-gray-50 rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl flex flex-col">
+                <div class="p-4 flex-grow">
+                    <div class="bg-red-100 text-red-900 p-2 rounded text-sm mb-2 shadow-sm font-medium text-center">自驾游</div>
+                    <div class="bg-red-100 text-red-900 p-2 rounded text-sm shadow-sm font-medium text-center">亲子时光</div>
+                </div>
+                <div class="p-3 bg-white border-t border-gray-200">
+                    <h3 class="text-center font-semibold text-red-800 text-lg">难忘经历</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto p-8 md:p-12 my-12 text-body">
+            <h3 class="text-2xl font-semibold text-red-800 mb-4">总结</h3>
+            <p class="text-light leading-relaxed mb-4">
+                &emsp;&emsp;当代公众对国庆假期的期待与行为呈现出多元化和内在化的鲜明特征。假期功能已从单纯的“休闲娱乐”演变为一个承载着个人情绪修复、家庭责任履行与社会情感连接的复合型时空。人们不再盲目追求远行与热闹，而是更注重身心的“充电”与“治愈”，追求自主掌控感与真实体验感。这种心态催生了“精微主义”假期模式：无论是偏爱自然、都市还是宅家，其核心诉求均是在有限的假期内，通过自主选择的、低心理负担的方式，寻求个体的自由轻松与家人的平安团圆。消费行为也因此趋于理性，呈现出计划性与渠道选择的高度灵活性。
+            </p>
+
+            <h3 class="text-2xl font-semibold text-red-800 mt-8 mb-4">建议</h3>
+            <ul class="mb-4 list-none space-y-3 text-light">
+                <li><strong class="font-medium text-red-800">对公众而言：</strong>
+                    应勇于打破“完美假期”的刻板印象，正视自身真实需求，采纳“动静结合”的规划，主动为假期留白，享受“微旅行”与“深度宅”带来的小确幸，从而获得真正的心灵满足。
+                </li>
+                <li><strong class="font-medium text-red-800">对商家与服务机构而言：</strong>
+                    旅游行业应开发更多“冷门但优质”的自然人文路线，并推广“错峰”与“近程休闲”产品，以规避“人多体验差”的痛点。零售行业：需优化“线上线下”无缝衔接的购物体验，线上提供透明比价与精准推荐，线下则提升服务效率、减少排队，以满足不同消费风格的需求。
+                </li>
+                <li><strong class="font-medium text-red-800">对社区与社会而言：</strong>
+                    可组织更多面向不同年龄段（如亲子家庭、退休老人）的本地文化、休闲活动，强化社区的节日凝聚力，为居民提供“不出远门也能过节”的高质量选择，呼应人们对“平安团圆”与“社区归属感”的深层向往。
+                </li>
+            </ul>
+
+            <h3 class="text-lg font-semibold text-gray-800 mt-20 mb-4 text-center">图表照片</h3>
+            <div class="flex justify-center">
+                <div>
+                    <img src="statistics/affinity_raw.jpg" class="m-4 h-48 rounded-lg shadow-lg">
+                    <div class="text-gray-900 p-2 text-sm font-medium text-center">原始便签</div>
+                </div>
+                <div>
+                    <img src="statistics/affinity_diagram.jpg" class="m-4 h-48 rounded-lg shadow-lg">
+                    <div class="text-gray-900 p-2 text-sm font-medium text-center">亲和图</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center mt-12 pb-12 text-gray-500">
+        <p class="text-sm">2025 人机蕉户团队</p>
+    </footer>
+
+</body>
+</html>
